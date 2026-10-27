@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hangman BD &#8212; Word Guessing Game</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1 id="title">Hangman BD</h1>
+    <p id="tagline">Guess the word, one letter at a time.</p>
+  </div>
+  <button id="langBtn" type="button">&#2476;&#2494;&#2434;&#2482;&#2494;</button>
+</header>
+
+<main class="wrap">
+  <section class="controls" aria-label="Game settings">
+    <label><span id="lblDifficulty">Difficulty</span>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+      </select>
+    </label>
+    <label><span id="lblCategory">Category</span>
+      <select id="category">
+        <option value="all">All categories</option>
+        <option value="animals">Animals</option>
+        <option value="food">Food</option>
+        <option value="nature">Nature</option>
+        <option value="daily">Daily life</option>
+      </select>
+    </label>
+    <button id="newBtn" type="button">New word</button>
+  </section>
+
+  <section class="stats" aria-label="Statistics">
+    <div><span id="statWinsLabel">Wins</span>: <strong id="statWins">0</strong></div>
+    <div><span id="statLossesLabel">Losses</span>: <strong id="statLosses">0</strong></div>
+    <div><span id="statStreakLabel">Streak</span>: <strong id="statStreak">0</strong></div>
+    <div><span id="statBestLabel">Best streak</span>: <strong id="statBest">0</strong></div>
+    <div><span id="statScoreLabel">Score</span>: <strong id="statScore">0</strong></div>
+    <button id="resetStatsBtn" type="button">Reset stats</button>
+  </section>
+
+  <section class="game">
+    <div class="board">
+      <svg id="gallows" viewBox="0 0 200 220" role="img" aria-label="Hangman drawing">
+        <line x1="20" y1="210" x2="120" y2="210" />
+        <line x1="50" y1="210" x2="50" y2="10" />
+        <line x1="50" y1="10" x2="140" y2="10" />
+        <line x1="140" y1="10" x2="140" y2="40" />
+        <g id="figure" aria-hidden="true">
+          <circle id="partHead" cx="140" cy="60" r="20" />
+          <line id="partBody" x1="140" y1="80" x2="140" y2="140" />
+          <line id="partArmL" x1="140" y1="100" x2="115" y2="125" />
+          <line id="partArmR" x1="140" y1="100" x2="165" y2="125" />
+          <line id="partLegL" x1="140" y1="140" x2="115" y2="175" />
+          <line id="partLegR" x1="140" y1="140" x2="165" y2="175" />
+        </g>
+      </svg>
+      <div class="meta">
+        <div><span id="livesLabel">Lives left</span>: <strong id="lives">6</strong></div>
+        <div><span id="wrongLabel">Wrong letters</span>: <strong id="wrongLetters">&#8212;</strong></div>
+        <div><span id="hintLabel">Hint</span>: <span id="hintText"></span></div>
+        <button id="hintBtn" type="button">Reveal a letter</button>
+        <p id="hintNote" class="note"></p>
+      </div>
+    </div>
+
+    <div id="wordDisplay" class="word" aria-live="polite"></div>
+    <p id="statusText" class="status" aria-live="polite"></p>
+
+    <div id="keyboard" class="keyboard" aria-label="Letter keyboard"></div>
+
+    <div id="endPanel" class="endpanel" hidden>
+      <h2 id="endTitle"></h2>
+      <p id="endWord"></p>
+      <p id="endScore"></p>
+      <button id="playAgainBtn" type="button">Play again</button>
+    </div>
+  </section>
+
+  <section class="howto">
+    <h2 id="howTitle">How to play</h2>
+    <ul id="howList">
+      <li>Guess the hidden word by tapping letters (or typing A&#8211;Z on your keyboard).</li>
+      <li>Each wrong guess draws one part of the hangman. 6 wrong guesses and the game is over.</li>
+      <li>Win a game to score 100 points plus 15 per life left. Wins in a row build your streak.</li>
+      <li>Hard mode uses longer words and no hint. Your stats stay on this device only.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <p id="footerText">Hangman BD is a free offline word game. Words are English with Bangla hints; no account, no network requests.</p>
+</footer>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
